@@ -54,7 +54,7 @@ def read_glores_yaml(repo_path: Path) -> Dict:
     Returns:
         Dict: Existing or default glores configuration
     """
-    glores_yaml_path = repo_path / '.git' / 'glores.yaml'
+    glores_yaml_path = repo_path / '.github' / 'glores.yaml'
     if glores_yaml_path.exists():
         with open(glores_yaml_path, 'r') as f:
             return yaml.safe_load(f) or {'repo-info': [], 'ws-status': []}
@@ -74,7 +74,7 @@ def write_glores_yaml(repo_path: Path, config: Dict):
         repo_path (Path): Path to the git repository
         config (Dict): Configuration to write
     """
-    glores_yaml_path = repo_path / '.git' / 'glores.yaml'
+    glores_yaml_path = repo_path / '.github' / 'glores.yaml'
     with open(glores_yaml_path, 'w') as f:
         yaml.safe_dump(config, f, default_flow_style=False, sort_keys=False)
 
